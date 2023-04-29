@@ -6,6 +6,7 @@ import glob
 import os
 import json
 from distutils.dir_util import copy_tree
+import shutil
 
 if not os.path.isdir("./data/RDD2022/Norway_split"):
     # split dataset for Norway into training and validation sets
@@ -34,11 +35,11 @@ if not os.path.isdir("./data/RDD2022/Norway_split"):
             print(f"{filename} image does not exist!")
             continue
         if train:
-            os.replace(os.path.join(from_xmls, f"{filename}.xml"), os.path.join(train_xmls, f"{filename}.xml"))
-            os.replace(os.path.join(from_images, f"{filename}.jpg"), os.path.join(train_images, f"{filename}.jpg"))
+            shutil.copy2(os.path.join(from_xmls, f"{filename}.xml"), train_xmls)
+            shutil.copy2(os.path.join(from_images, f"{filename}.jpg"), train_images)
         else:
-            os.replace(os.path.join(from_xmls, f"{filename}.xml"), os.path.join(val_xmls, f"{filename}.xml"))
-            os.replace(os.path.join(from_images, f"{filename}.jpg"), os.path.join(val_images, f"{filename}.jpg"))
+            shutil.copy2(os.path.join(from_xmls, f"{filename}.xml"), val_xmls,)
+            shutil.copy2(os.path.join(from_images, f"{filename}.jpg"), val_images)
         train = not train
 
 
