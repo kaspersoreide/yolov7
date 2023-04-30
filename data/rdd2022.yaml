@@ -1,5 +1,3 @@
-download: python ./scripts/get_rdd2022.py
-
 train: ./data/RDD2022/Norway_split/train
 test: ./data/RDD2022/Norway/test/images
 val: ./data/RDD2022/Norway_split/val
