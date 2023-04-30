@@ -3,7 +3,6 @@ nc: 4  # number of classes
 depth_multiple: 1.0  # model depth multiple
 width_multiple: 1.0  # layer channel multiple
 
-# autoanchor: n=9, img_size=2048, metric_all=0.291/0.688-mean/best, past_thr=0.461-mean: 24,22,  33,59,  71,38,  247,26,  73,91,  176,98,  89,217,  820,61,  273,267
 # anchors
 anchors:
   - [10,13, 16,30, 33,23]  # P3/8
@@ -19,6 +18,7 @@ backbone:
    
    [-1, 1, Conv, [32, 1, 1, None, 1, nn.LeakyReLU(0.1)]],
    [-2, 1, Conv, [32, 1, 1, None, 1, nn.LeakyReLU(0.1)]],
+   [-1, 1, Conv, [32, 3, 1, None, 1, nn.LeakyReLU(0.1)]],
    [-1, 1, Conv, [32, 3, 1, None, 1, nn.LeakyReLU(0.1)]],
    [-1, 1, Conv, [32, 3, 1, None, 1, nn.LeakyReLU(0.1)]],
    [[-1, -2, -3, -4], 1, Concat, [1]],
